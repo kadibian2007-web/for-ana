@@ -1,0 +1,3001 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای آنا | تا همیشه</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --pink:#ff79b7;
+    --purple:#9d70ff;
+    --blue:#687dff;
+    --white:#fff;
+    --glass:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.12);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#02030b;
+    color:#fff;
+    font-family:"Vazirmatn",Tahoma,sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   SPACE BACKGROUND
+========================================================= */
+
+#space{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(100,35,180,.18),transparent 30%),
+        radial-gradient(circle at 85% 25%,rgba(35,75,190,.15),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(170,30,100,.13),transparent 35%),
+        #02030b;
+}
+
+#stars{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-9;
+}
+
+.nebula{
+    position:fixed;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.18;
+    pointer-events:none;
+    z-index:-8;
+    background:radial-gradient(circle,#a84dff,transparent 65%);
+    top:-300px;
+    right:-250px;
+    animation:nebulaMove 18s ease-in-out infinite alternate;
+}
+
+.nebula.two{
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#356fff,transparent 65%);
+    left:-250px;
+    bottom:-250px;
+    top:auto;
+    right:auto;
+    animation-delay:4s;
+}
+
+@keyframes nebulaMove{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(-80px,70px) scale(1.25)}
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+#loginScreen{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        radial-gradient(circle at center,rgba(80,45,130,.18),transparent 35%),
+        #010108;
+    transition:1s;
+}
+
+#loginScreen.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+.loginBox{
+    width:min(430px,100%);
+    padding:45px 30px;
+    text-align:center;
+    border-radius:32px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 0 100px rgba(135,75,255,.18),
+        inset 0 1px rgba(255,255,255,.12);
+    backdrop-filter:blur(25px);
+}
+
+.moon{
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    margin:0 auto 25px;
+    background:
+        radial-gradient(circle at 30% 25%,#fff,#ddd 35%,#777 100%);
+    box-shadow:
+        0 0 70px rgba(230,225,255,.45);
+    position:relative;
+}
+
+.moon:before,
+.moon:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:#aaa5;
+}
+
+.moon:before{
+    width:18px;
+    height:18px;
+    top:27px;
+    left:25px;
+}
+
+.moon:after{
+    width:12px;
+    height:12px;
+    right:25px;
+    bottom:25px;
+}
+
+.loginSmall{
+    color:#c69cff;
+    letter-spacing:4px;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.loginBox h1{
+    font-size:48px;
+    margin-bottom:8px;
+}
+
+.loginBox p{
+    color:#aaa;
+    margin-bottom:22px;
+}
+
+#password{
+    width:100%;
+    height:58px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.12);
+    outline:none;
+    background:#070811;
+    color:#fff;
+    text-align:center;
+    font-size:25px;
+    letter-spacing:12px;
+}
+
+#loginError{
+    height:28px;
+    padding-top:7px;
+    color:#ff7dac;
+    font-size:12px;
+}
+
+.mainBtn{
+    border:0;
+    padding:14px 28px;
+    border-radius:30px;
+    color:#fff;
+    background:linear-gradient(100deg,#7744ed,#dc5b9e);
+    cursor:pointer;
+    font-family:inherit;
+    font-size:14px;
+    box-shadow:0 12px 35px rgba(130,55,220,.3);
+    transition:.25s;
+}
+
+.mainBtn:hover{
+    transform:translateY(-3px) scale(1.02);
+}
+
+/* =========================================================
+   SITE
+========================================================= */
+
+#site{
+    display:none;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+section{
+    padding:110px 0;
+}
+
+.glass{
+    background:var(--glass);
+    border:1px solid var(--border);
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.42),
+        inset 0 1px rgba(255,255,255,.07);
+    backdrop-filter:blur(20px);
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1050px,94%);
+    z-index:500;
+    display:flex;
+    gap:4px;
+    padding:8px;
+    border-radius:50px;
+    overflow-x:auto;
+    background:rgba(4,4,14,.72);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(20px);
+    scrollbar-width:none;
+}
+
+.nav::-webkit-scrollbar{
+    display:none;
+}
+
+.nav a{
+    white-space:nowrap;
+    text-decoration:none;
+    color:#c8c5cf;
+    padding:9px 14px;
+    border-radius:25px;
+    font-size:12px;
+    transition:.25s;
+}
+
+.nav a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.1);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.heroContent{
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
+    color:#c79aff;
+    letter-spacing:5px;
+    font-size:11px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(65px,13vw,150px);
+    line-height:1;
+    margin-bottom:28px;
+    background:linear-gradient(110deg,#fff,#d8b4ff,#ff9dcc);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.heroText{
+    max-width:680px;
+    margin:auto;
+    line-height:2.4;
+    color:#c6bfca;
+    font-size:17px;
+}
+
+.scrollBtn{
+    margin-top:30px;
+}
+
+.counter{
+    margin:45px auto 0;
+    width:min(700px,100%);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.counterItem{
+    padding:18px 8px;
+    border-radius:20px;
+}
+
+.counterItem strong{
+    display:block;
+    font-size:27px;
+    color:#fff;
+}
+
+.counterItem span{
+    color:#85808c;
+    font-size:11px;
+}
+
+/* =========================================================
+   TITLES
+========================================================= */
+
+.sectionTag{
+    text-align:center;
+    color:#bd91ff;
+    letter-spacing:4px;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.sectionTitle{
+    text-align:center;
+    font-size:clamp(35px,6vw,68px);
+    margin-bottom:18px;
+}
+
+.sectionDescription{
+    max-width:720px;
+    margin:0 auto 50px;
+    color:#aaa3b0;
+    text-align:center;
+    line-height:2.3;
+}
+
+/* =========================================================
+   CATS
+========================================================= */
+
+.catGrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.catCard{
+    height:400px;
+    position:relative;
+    border-radius:30px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle at 50% 40%,rgba(255,150,80,.07),transparent 50%),
+        rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.09);
+}
+
+.catCard:after{
+    content:"";
+    position:absolute;
+    bottom:35px;
+    width:145px;
+    height:22px;
+    border-radius:50%;
+    background:#000b;
+    filter:blur(11px);
+}
+
+.cat{
+    width:180px;
+    height:280px;
+    position:relative;
+    z-index:4;
+    cursor:pointer;
+    animation:dance 1.05s infinite ease-in-out;
+    transform-origin:bottom center;
+    filter:drop-shadow(0 22px 15px rgba(0,0,0,.7));
+}
+
+@keyframes dance{
+    0%,100%{
+        transform:translateY(5px) rotate(-3deg);
+    }
+    25%{
+        transform:translateY(-7px) rotate(5deg) scaleX(1.03);
+    }
+    50%{
+        transform:translateY(8px) rotate(-6deg) scaleX(.97);
+    }
+    75%{
+        transform:translateY(-4px) rotate(4deg);
+    }
+}
+
+/* body */
+.catBody{
+    position:absolute;
+    width:102px;
+    height:145px;
+    left:39px;
+    bottom:25px;
+    border-radius:48% 48% 40% 40%;
+    background:
+        linear-gradient(110deg,#5b200b 0%,#b84d1d 35%,#e47c35 68%,#f4a55f 100%);
+    box-shadow:
+        inset -15px -12px 22px rgba(65,20,0,.45),
+        inset 11px 5px 18px rgba(255,255,255,.15);
+}
+
+/* head */
+.catHead{
+    position:absolute;
+    width:115px;
+    height:105px;
+    left:32px;
+    top:22px;
+    border-radius:48%;
+    background:
+        linear-gradient(110deg,#60220c,#c85c25 48%,#f2a05a);
+    box-shadow:
+        inset -13px -10px 18px rgba(65,20,0,.4),
+        inset 10px 5px 14px rgba(255,255,255,.12);
+    z-index:5;
+}
+
+.ear{
+    position:absolute;
+    top:-29px;
+    width:53px;
+    height:57px;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+    background:#a3461b;
+}
+
+.ear.left{
+    left:2px;
+}
+
+.ear.right{
+    right:2px;
+}
+
+.earInner{
+    position:absolute;
+    width:24px;
+    height:30px;
+    background:#ee9276;
+    left:15px;
+    top:12px;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+    opacity:.8;
+}
+
+.eyeCat{
+    position:absolute;
+    top:44px;
+    width:15px;
+    height:19px;
+    border-radius:50%;
+    background:#17100d;
+}
+
+.eyeCat.left{
+    left:29px;
+}
+
+.eyeCat.right{
+    right:29px;
+}
+
+.eyeCat:after{
+    content:"";
+    position:absolute;
+    width:4px;
+    height:5px;
+    background:#fff;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+}
+
+.nose{
+    position:absolute;
+    top:67px;
+    left:50%;
+    transform:translateX(-50%);
+    width:11px;
+    height:8px;
+    border-radius:50%;
+    background:#7d2735;
+}
+
+.mouth{
+    position:absolute;
+    top:74px;
+    left:50%;
+    transform:translateX(-50%);
+    width:22px;
+    height:11px;
+    border-bottom:2px solid #38120d;
+    border-radius:50%;
+}
+
+/* whiskers */
+.whisker{
+    position:absolute;
+    width:42px;
+    height:1px;
+    background:#fff8;
+    top:71px;
+}
+
+.whisker.w1{
+    left:-30px;
+    transform:rotate(8deg);
+}
+
+.whisker.w2{
+    right:-30px;
+    transform:rotate(-8deg);
+}
+
+/* legs */
+.leg{
+    position:absolute;
+    bottom:4px;
+    width:31px;
+    height:55px;
+    background:#8e3917;
+    border-radius:20px;
+    z-index:3;
+}
+
+.leg.left{
+    left:45px;
+}
+
+.leg.right{
+    right:45px;
+}
+
+/* tail */
+.tail{
+    position:absolute;
+    right:-2px;
+    bottom:70px;
+    width:110px;
+    height:115px;
+    border:14px solid #963c17;
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:50%;
+    transform:rotate(20deg);
+}
+
+/* BUTT */
+.butt{
+    position:absolute;
+    width:75px;
+    height:80px;
+    left:99px;
+    bottom:72px;
+    z-index:20;
+    cursor:pointer;
+}
+
+.buttHint{
+    position:absolute;
+    bottom:17px;
+    z-index:30;
+    color:#aaa;
+    font-size:11px;
+    background:#0009;
+    border:1px solid #fff1;
+    border-radius:30px;
+    padding:7px 13px;
+}
+
+.catName{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:30;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#0008;
+    font-size:11px;
+    color:#ddd;
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.musicGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.musicCard{
+    padding:30px;
+    border-radius:30px;
+}
+
+.musicTop{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.disc{
+    width:85px;
+    height:85px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(
+            circle,
+            #111 0 3px,
+            #56336d 4px 5px
+        );
+    box-shadow:
+        0 0 35px rgba(171,80,240,.4);
+    animation:spin 8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.musicCard h3{
+    font-size:25px;
+}
+
+.musicCard p{
+    color:#999;
+    font-size:13px;
+    margin-top:5px;
+}
+
+audio{
+    width:100%;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.photo{
+    aspect-ratio:1/1.2;
+    padding:7px;
+    border-radius:25px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    transform:rotate(var(--r));
+    transition:.4s;
+    cursor:pointer;
+}
+
+.photo:hover{
+    transform:rotate(0) translateY(-12px) scale(1.04);
+    z-index:10;
+    box-shadow:0 25px 50px #0009;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+    background:#101018;
+}
+
+/* =========================================================
+   365 REASONS
+========================================================= */
+
+.reasonGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.reason{
+    min-height:145px;
+    padding:22px;
+    border-radius:23px;
+    line-height:2;
+    color:#d9d4de;
+    transition:.25s;
+}
+
+.reason:hover{
+    transform:translateY(-4px);
+    border-color:#ffffff25;
+}
+
+.reasonNumber{
+    display:block;
+    color:#c89cff;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+/* =========================================================
+   ENOUGH
+========================================================= */
+
+.enoughBox{
+    padding:80px 30px;
+    border-radius:35px;
+    text-align:center;
+}
+
+.enoughBox h2{
+    font-size:clamp(50px,9vw,100px);
+    color:#ffadd7;
+    margin:15px 0 25px;
+}
+
+.enoughBox p{
+    max-width:750px;
+    margin:auto;
+    line-height:2.5;
+    color:#c6c0ca;
+}
+
+/* =========================================================
+   LETTERS
+========================================================= */
+
+.letterGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.letter{
+    padding:28px;
+    border-radius:27px;
+    line-height:2.35;
+}
+
+.letter h3{
+    color:#d3a6ff;
+    margin-bottom:13px;
+    font-size:20px;
+}
+
+/* =========================================================
+   EYES
+========================================================= */
+
+.eyeSection{
+    text-align:center;
+}
+
+.eyes{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    margin:50px 0 25px;
+}
+
+.realEye{
+    width:220px;
+    height:140px;
+    position:relative;
+    overflow:hidden;
+    border-radius:75% 12%;
+    background:#eee;
+    cursor:pointer;
+    transform:rotate(14deg);
+    box-shadow:
+        0 0 50px rgba(255,255,255,.1);
+}
+
+.realEye:nth-child(2){
+    transform:scaleX(-1) rotate(14deg);
+}
+
+.iris{
+    position:absolute;
+    width:88px;
+    height:88px;
+    left:66px;
+    top:27px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            #050303 0 11%,
+            #6b4022 13% 34%,
+            #b47736 36% 53%,
+            #32170b 56% 65%,
+            #8e5c29 67% 75%,
+            #17100b 77%
+        );
+    box-shadow:0 0 28px rgba(190,130,60,.6);
+}
+
+.pupilGlow{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:#fff;
+    border-radius:50%;
+    top:18px;
+    left:20px;
+    box-shadow:
+        22px 30px 2px #fff,
+        48px 10px 1px #fff,
+        33px 53px 2px #fff;
+}
+
+/* =========================================================
+   OVERTHINKING
+========================================================= */
+
+.overthinkBox{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.overCard{
+    padding:30px;
+    border-radius:28px;
+    line-height:2.35;
+}
+
+.overCard h3{
+    color:#e1b4ff;
+    margin-bottom:14px;
+}
+
+/* =========================================================
+   SHAMS
+========================================================= */
+
+.shamsGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.shamsCard{
+    padding:30px;
+    border-radius:28px;
+    line-height:2.5;
+}
+
+.shamsCard h3{
+    color:#ddaaff;
+    margin-bottom:15px;
+}
+
+.shamsCard .poem{
+    color:#fff;
+    font-size:17px;
+    margin-bottom:15px;
+}
+
+.shamsCard .meaning{
+    color:#9d97a5;
+    font-size:13px;
+}
+
+/* =========================================================
+   HUG
+========================================================= */
+
+.hugBox{
+    min-height:360px;
+    border-radius:35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.bigHeart{
+    font-size:90px;
+    color:#ff75b8;
+    text-shadow:0 0 40px #ff55a5;
+    animation:heartBeat 1s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.18)}
+}
+
+.hugBox h2{
+    margin-top:5px;
+    font-size:32px;
+}
+
+.hugBox p{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.hugBtn{
+    margin-top:22px;
+}
+
+.ring{
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:30px;
+    height:30px;
+    border:2px solid #ff80bf;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9990;
+    animation:ringExpand 1.5s ease-out forwards;
+}
+
+@keyframes ringExpand{
+    to{
+        width:800px;
+        height:800px;
+        margin-left:-400px;
+        margin-top:-400px;
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:90px 20px;
+    text-align:center;
+    color:#68636e;
+}
+
+footer strong{
+    color:#c798ff;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.84);
+    backdrop-filter:blur(18px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modalBox{
+    width:min(720px,100%);
+    max-height:85vh;
+    overflow:auto;
+    padding:35px;
+    border-radius:30px;
+    background:
+        linear-gradient(145deg,#181222,#08070e);
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:0 30px 100px #000;
+    animation:modalIn .35s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.closeModal{
+    float:left;
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    color:#fff;
+    background:#ffffff12;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.modalBox h2{
+    color:#dfaaff;
+    margin-bottom:18px;
+}
+
+.modalBox p{
+    color:#ddd;
+    line-height:2.5;
+    white-space:pre-line;
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightboxImage{
+    max-width:95vw;
+    max-height:85vh;
+    object-fit:contain;
+    border-radius:20px;
+    box-shadow:0 30px 100px #000;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .catGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .reasonGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .nav{
+        top:8px;
+    }
+
+    .hero h1{
+        font-size:70px;
+    }
+
+    .counter{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .musicGrid,
+    .letterGrid,
+    .overthinkBox,
+    .shamsGrid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .reasonGrid{
+        grid-template-columns:1fr;
+    }
+
+    .eyes{
+        gap:10px;
+    }
+
+    .realEye{
+        width:145px;
+        height:95px;
+    }
+
+    .iris{
+        width:60px;
+        height:60px;
+        left:43px;
+        top:18px;
+    }
+
+    .catGrid{
+        gap:9px;
+    }
+
+    .catCard{
+        height:330px;
+    }
+
+    .cat{
+        transform:scale(.82);
+    }
+}
+
+@media(max-width:390px){
+
+    .catGrid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero h1{
+        font-size:58px;
+    }
+
+    .loginBox{
+        padding:35px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="space"></div>
+<canvas id="stars"></canvas>
+<div class="nebula"></div>
+<div class="nebula two"></div>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div id="loginScreen">
+
+    <div class="loginBox">
+
+        <div class="moon"></div>
+
+        <div class="loginSmall">
+            PRIVATE UNIVERSE
+        </div>
+
+        <h1>برای آنا</h1>
+
+        <p>رمز : عدد ما</p>
+
+        <input
+            id="password"
+            type="password"
+            maxlength="3"
+            inputmode="numeric"
+            placeholder="•••"
+        >
+
+        <div id="loginError"></div>
+
+        <button
+            class="mainBtn"
+            id="loginBtn"
+        >
+            ورود به جهان من
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SITE
+===================================================== -->
+
+<div id="site">
+
+<nav class="nav">
+
+    <a href="#home">خانه</a>
+    <a href="#cats">گربه‌ها</a>
+    <a href="#music">آهنگ‌ها</a>
+    <a href="#gallery">خاطره‌ها</a>
+    <a href="#reasons">۳۶۵ دلیل</a>
+    <a href="#overthinking">اورثینک</a>
+    <a href="#eyes">چشم‌ها</a>
+    <a href="#shams">شمس</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container heroContent">
+
+    <div class="eyebrow">
+        FOR ANNA · ALWAYS
+    </div>
+
+    <h1>برای آنا</h1>
+
+    <p class="heroText">
+        اینجا یک تکه‌ی کوچک از جهانی‌ست
+        که در آن شب‌ها ستاره دارند،
+        گربه‌ها شیک می‌زنند،
+        آهنگ‌ها خاطره می‌شوند
+        و یک نفر همیشه دلیل روشنی برای لبخند زدن دارد.
+    </p>
+
+    <button
+        class="mainBtn scrollBtn"
+        onclick="document.getElementById('cats').scrollIntoView()"
+    >
+        جهان را شروع کن
+    </button>
+
+    <div id="counter" class="counter"></div>
+
+</div>
+
+</section>
+
+
+<!-- CATS -->
+
+<section id="cats">
+
+<div class="container">
+
+    <div class="sectionTag">
+        THE CATS KNOW
+    </div>
+
+    <h2 class="sectionTitle">
+        گربه‌های آنا
+    </h2>
+
+    <p class="sectionDescription">
+        چهار گربه‌ی نارنجی اینجا منتظرند.
+        دارند شیک می‌زنند و هر کدام یک نامه‌ی مخفی دارند.
+        فقط روی باسنشون بزن.
+    </p>
+
+    <div id="catGrid" class="catGrid"></div>
+
+</div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section id="music">
+
+<div class="container">
+
+    <div class="sectionTag">
+        OUR SOUNDTRACK
+    </div>
+
+    <h2 class="sectionTitle">
+        آهنگ‌های ما
+    </h2>
+
+    <p class="sectionDescription">
+        فایل آهنگ‌ها را کنار همین فایل HTML بگذار.
+        بعد از باز کردن سایت می‌توانی مستقیم پخششان کنی.
+    </p>
+
+    <div class="musicGrid">
+
+        <div class="musicCard glass">
+
+            <div class="musicTop">
+
+                <div class="disc"></div>
+
+                <div>
+                    <h3>ایسم</h3>
+                    <p>برای شب‌هایی که آهنگ باید حرف بزند.</p>
+                </div>
+
+            </div>
+
+            <audio controls preload="metadata">
+                <source src="song-esm.mp3" type="audio/mpeg">
+            </audio>
+
+        </div>
+
+
+        <div class="musicCard glass">
+
+            <div class="musicTop">
+
+                <div class="disc"></div>
+
+                <div>
+                    <h3>مهیار</h3>
+                    <p>برای تمام لحظه‌هایی که موسیقی خاطره می‌شود.</p>
+                </div>
+
+            </div>
+
+            <audio controls preload="metadata">
+                <source src="song-mahyar.mp3" type="audio/mpeg">
+            </audio>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="container">
+
+    <div class="sectionTag">
+        OUR MEMORIES
+    </div>
+
+    <h2 class="sectionTitle">
+        دوازده تکه از خاطره‌ها
+    </h2>
+
+    <p class="sectionDescription">
+        روی هر عکس بزن تا بزرگ شود.
+    </p>
+
+    <div id="galleryGrid" class="gallery"></div>
+
+</div>
+
+</section>
+
+
+<!-- 365 -->
+
+<section id="reasons">
+
+<div class="container">
+
+    <div class="sectionTag">
+        365 LITTLE REASONS
+    </div>
+
+    <h2 class="sectionTitle">
+        ۳۶۵ دلیل دوست داشتن
+    </h2>
+
+    <p class="sectionDescription">
+        نه برای اینکه دوست داشتن به دلیل احتیاج دارد؛
+        فقط برای اینکه بعضی چیزها آن‌قدر ارزشمندند
+        که حیف است نوشته نشوند.
+    </p>
+
+    <div id="reasonGrid" class="reasonGrid"></div>
+
+</div>
+
+</section>
+
+
+<!-- ENOUGH -->
+
+<section>
+
+<div class="container">
+
+    <div class="enoughBox glass">
+
+        <div class="sectionTag">
+            YOU ARE ENOUGH
+        </div>
+
+        <h2>
+            آنا کافی است.
+        </h2>
+
+        <p>
+            تو لازم نیست همیشه قوی باشی.
+            لازم نیست همیشه خوشحال باشی.
+            لازم نیست همیشه جواب درست را بدانی.
+            لازم نیست بی‌نقص باشی.
+            لازم نیست برای دوست‌داشتنی بودن
+            خودت را به چیزی تبدیل کنی که نیستی.
+
+            <br><br>
+
+            تو حتی در روزهایی که خسته‌ای،
+            حتی وقتی گریه می‌کنی،
+            حتی وقتی ذهنت شلوغ است،
+            حتی وقتی خودت را نمی‌فهمی،
+            هنوز همان آدم ارزشمندی هستی
+            که شایسته‌ی دوست داشته شدن است.
+
+            <br><br>
+
+            آنا،
+            تو کافی هستی.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- OVERTHINKING -->
+
+<section id="overthinking">
+
+<div class="container">
+
+    <div class="sectionTag">
+        FOR YOUR LOUD MIND
+    </div>
+
+    <h2 class="sectionTitle">
+        وقتی ذهنت زیادی حرف می‌زند
+    </h2>
+
+    <p class="sectionDescription">
+        این قسمت را برای آن شب‌هایی نگه دار
+        که ذهنت می‌خواهد از یک اتفاق کوچک
+        هزار داستان ترسناک بسازد.
+    </p>
+
+    <div class="overthinkBox">
+
+        <div class="overCard glass">
+
+            <h3>اگر فکر کردی تقصیر توست...</h3>
+
+            <p>
+                آنا، هر اتفاق بدی الزاماً یک مقصر ندارد.
+                قرار نیست هر چیزی که خراب می‌شود
+                روی شانه‌های تو قرار بگیرد.
+                گاهی اتفاق‌ها فقط اتفاق‌اند.
+                گاهی آدم‌ها خسته‌اند.
+                گاهی شرایط سخت است.
+                قبل از اینکه خودت را متهم کنی،
+                کمی مکث کن و از خودت بپرس:
+                «اگر این اتفاق برای کسی که دوستش دارم افتاده بود،
+                با او هم همین‌قدر بی‌رحمانه حرف می‌زدم؟»
+                اگر جواب نه است،
+                پس با خودت هم همان مهربانی را داشته باش.
+            </p>
+
+        </div>
+
+
+        <div class="overCard glass">
+
+            <h3>اگر فکر کردی کافی نیستی...</h3>
+
+            <p>
+                تو برای کافی بودن لازم نیست
+                همیشه بهترین نسخه‌ی خودت باشی.
+                آدم بودن یعنی روزهای خوب،
+                روزهای بد،
+                اشتباه،
+                خستگی،
+                ترس،
+                تردید و دوباره بلند شدن.
+                هیچ‌کدام از این‌ها ارزش تو را کم نمی‌کند.
+                تو پروژه‌ای نیستی که باید تمامش کرد
+                تا بالاخره ارزش دوست داشته شدن پیدا کنی.
+            </p>
+
+        </div>
+
+
+        <div class="overCard glass">
+
+            <h3>اگر سکوت ترسناک شد...</h3>
+
+            <p>
+                سکوت همیشه به معنی رفتن نیست.
+                یک سکوت می‌تواند فقط خستگی باشد.
+                می‌تواند ذهنی باشد که ظرفیت بیشتری ندارد.
+                می‌تواند چند ساعت نیاز به آرامش باشد.
+                نگذار ذهنت جای خالی اطلاعات را
+                با بدترین سناریوی ممکن پر کند.
+                هر فکری که به ذهنت می‌رسد
+                الزاماً حقیقت نیست.
+            </p>
+
+        </div>
+
+
+        <div class="overCard glass">
+
+            <h3>اگر آینده ترسناک شد...</h3>
+
+            <p>
+                قرار نیست امشب آینده را حل کنی.
+                فردا هنوز نیامده.
+                هفته‌ی بعد هنوز اتفاق نیفتاده.
+                پنج سال بعد اصلاً اینجا نیست.
+                فعلاً فقط همین نفس را بکش.
+                همین لحظه را زندگی کن.
+                لازم نیست تمام مسیر را ببینی
+                تا بتوانی قدم بعدی را برداری.
+            </p>
+
+        </div>
+
+
+        <div class="overCard glass">
+
+            <h3>اگر خواستی همه‌چیز را کنترل کنی...</h3>
+
+            <p>
+                بعضی چیزها تحت کنترل تو نیستند
+                و این شکست نیست.
+                تو نمی‌توانی ذهن همه را بخوانی،
+                آینده را پیش‌بینی کنی،
+                تمام اتفاق‌ها را جلوگیری کنی
+                یا همیشه مطمئن باشی چه خواهد شد.
+                چیزی که می‌توانی کنترل کنی،
+                مهربانی تو با خودت،
+                انتخاب‌های امروزت
+                و نفسی‌ست که همین حالا می‌کشی.
+            </p>
+
+        </div>
+
+
+        <div class="overCard glass">
+
+            <h3>اگر شب خواب نبرد...</h3>
+
+            <p>
+                لازم نیست با افکارت بجنگی.
+                بگذار باشند.
+                فقط مجبور نیستی دنبالشان بروی.
+                یک فکر می‌آید،
+                تو آن را می‌بینی،
+                نفس می‌کشی،
+                و اجازه می‌دهی رد شود.
+                فردا برای حل خیلی از این مسائل
+                وقت بیشتری وجود دارد.
+                امشب فقط استراحت کن.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- EYES -->
+
+<section id="eyes">
+
+<div class="container eyeSection">
+
+    <div class="sectionTag">
+        HER EYES
+    </div>
+
+    <h2 class="sectionTitle">
+        چشم‌های آنا
+    </h2>
+
+    <div class="eyes">
+
+        <div class="realEye" onclick="eyeMagic()">
+            <div class="iris">
+                <div class="pupilGlow"></div>
+            </div>
+        </div>
+
+        <div class="realEye" onclick="eyeMagic()">
+            <div class="iris">
+                <div class="pupilGlow"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="sectionDescription">
+        روی چشم بزن؛
+        برای ستاره‌هایی که توی چشم‌هات جا خوش کرده‌اند.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- SHAMS -->
+
+<section id="shams">
+
+<div class="container">
+
+    <div class="sectionTag">
+        RUMI & SHAMS
+    </div>
+
+    <h2 class="sectionTitle">
+        دیوان شمس
+    </h2>
+
+    <p class="sectionDescription">
+        چند بیت مشهور از غزلیات مولانا؛
+        برای وقتی که عشق باید کمی شبیه شعر باشد.
+    </p>
+
+    <div class="shamsGrid">
+
+        <div class="shamsCard glass">
+
+            <h3>غزل «بی‌همگان»</h3>
+
+            <div class="poem">
+                بی‌همگان به سر شود،
+                بی‌تو به سر نمی‌شود
+            </div>
+
+            <div class="meaning">
+                بعضی نبودن‌ها فقط نبودن یک آدم نیستند؛
+                انگار بخشی از جهان را با خودشان می‌برند.
+            </div>
+
+        </div>
+
+
+        <div class="shamsCard glass">
+
+            <h3>غزل «عشق آمد»</h3>
+
+            <div class="poem">
+                عشق آمد و شد چو خونم اندر رگ و پوست
+            </div>
+
+            <div class="meaning">
+                عشقی که فقط یک احساس نیست؛
+                چیزی‌ست که آرام‌آرام در تمام وجود آدم جریان پیدا می‌کند.
+            </div>
+
+        </div>
+
+
+        <div class="shamsCard glass">
+
+            <h3>برای شمس</h3>
+
+            <div class="poem">
+                تو مرا جان و جهانی،
+                چه کنم جان و جهان را
+            </div>
+
+            <div class="meaning">
+                وقتی یک نفر برای آدم از «همه‌چیز»
+                به «معنای همه‌چیز» تبدیل می‌شود.
+            </div>
+
+        </div>
+
+
+        <div class="shamsCard glass">
+
+            <h3>عشق</h3>
+
+            <div class="poem">
+                هر کسی از ظن خود شد یار من
+                از درون من نجست اسرار من
+            </div>
+
+            <div class="meaning">
+                شاید هیچ‌کس نتواند تمام جهان درون یک انسان را
+                از بیرون ببیند؛
+                برای همین گاهی باید با مهربانی بیشتر گوش داد.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- HUG -->
+
+<section>
+
+<div class="container">
+
+    <div class="hugBox glass">
+
+        <div class="sectionTag">
+            A HUG FROM HERE
+        </div>
+
+        <div class="bigHeart">♥</div>
+
+        <h2>برای جودی نیک</h2>
+
+        <p>
+            اگر الان اینجا بودی، یک بغل محکم طلبت داشتم.
+        </p>
+
+        <button
+            class="mainBtn hugBtn"
+            onclick="sendHug()"
+        >
+            بغلش کن
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<footer>
+    ساخته شده با یک عالمه ستاره و کمی دیوانگی،
+    برای <strong>آنا</strong> ♥
+    <br><br>
+    تا همیشه.
+</footer>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div id="modal" class="modal">
+
+    <div class="modalBox">
+
+        <button
+            class="closeModal"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalText"></p>
+
+    </div>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+    id="lightbox"
+    class="modal"
+    onclick="closeLightbox()"
+>
+    <img
+        id="lightboxImage"
+        class="lightboxImage"
+        src=""
+        alt="خاطره"
+    >
+</div>
+
+
+<audio id="meow" src="meow.mp3" preload="auto"></audio>
+
+
+<script>
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+const passwordInput = document.getElementById("password");
+const loginButton = document.getElementById("loginBtn");
+
+function login(){
+
+    const value = passwordInput.value.trim();
+
+    if(value === "111"){
+
+        document.getElementById("loginScreen").classList.add("hide");
+
+        setTimeout(function(){
+
+            document.getElementById("loginScreen").style.display="none";
+            document.getElementById("site").style.display="block";
+
+        },800);
+
+    }else{
+
+        document.getElementById("loginError").textContent =
+            "رمز اشتباهه... عدد ما رو یادت رفته؟";
+
+        passwordInput.value="";
+
+    }
+}
+
+loginButton.addEventListener("click",login);
+
+passwordInput.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+        login();
+    }
+
+});
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+let stars=[];
+
+function resizeCanvas(){
+
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+
+    stars=[];
+
+    const count=Math.min(
+        260,
+        Math.floor(
+            window.innerWidth*
+            window.innerHeight/
+            5500
+        )
+    );
+
+    for(let i=0;i<count;i++){
+
+        stars.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            r:Math.random()*1.5+.2,
+            a:Math.random()*.8+.15,
+            speed:Math.random()*.008+.002
+        });
+
+    }
+}
+
+function animateStars(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    stars.forEach(function(s){
+
+        s.a += s.speed;
+
+        const alpha =
+            .35+
+            Math.sin(s.a)*.35;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            s.x,
+            s.y,
+            s.r,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle=
+            "rgba(255,255,255,"+
+            Math.max(.08,alpha)+")";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateStars);
+}
+
+resizeCanvas();
+animateStars();
+
+window.addEventListener("resize",resizeCanvas);
+
+
+/* =====================================================
+   COUNTER
+===================================================== */
+
+const startDate=
+    new Date("2025-10-01T00:00:00");
+
+function updateCounter(){
+
+    const now=new Date();
+
+    let diff=now-startDate;
+
+    if(diff<0) diff=0;
+
+    const days=Math.floor(
+        diff/(1000*60*60*24)
+    );
+
+    diff%=(1000*60*60*24);
+
+    const hours=Math.floor(
+        diff/(1000*60*60)
+    );
+
+    diff%=(1000*60*60);
+
+    const minutes=Math.floor(
+        diff/(1000*60)
+    );
+
+    diff%=(1000*60);
+
+    const seconds=Math.floor(
+        diff/1000
+    );
+
+    document.getElementById("counter").innerHTML=`
+
+        <div class="counterItem glass">
+            <strong>${days}</strong>
+            <span>روز</span>
+        </div>
+
+        <div class="counterItem glass">
+            <strong>${hours}</strong>
+            <span>ساعت</span>
+        </div>
+
+        <div class="counterItem glass">
+            <strong>${minutes}</strong>
+            <span>دقیقه</span>
+        </div>
+
+        <div class="counterItem glass">
+            <strong>${seconds}</strong>
+            <span>ثانیه</span>
+        </div>
+
+    `;
+
+}
+
+updateCounter();
+setInterval(updateCounter,1000);
+
+
+/* =====================================================
+   CATS
+===================================================== */
+
+const cats=[
+
+{
+    name:"نارنج",
+    text:
+`آنا،
+
+اگر امروز دلت خسته است،
+لازم نیست وانمود کنی که نیست.
+
+اگر دلت یک بغل می‌خواهد،
+بخواه.
+
+اگر می‌خواهی چند دقیقه هیچ کاری نکنی،
+هیچ کاری نکن.
+
+تو مجبور نیستی همیشه محکم باشی.
+
+گاهی قشنگ‌ترین کاری که می‌توانی برای خودت بکنی
+این است که کمی آرام‌تر نفس بکشی.
+
+و یادت باشد:
+یک جایی در این دنیا،
+یک نفر هست که دوست دارد
+لبخندت را دوباره ببیند.`
+},
+
+{
+    name:"پفک",
+    text:
+`نامه‌ی مخصوص شب‌های اورثینک:
+
+آنا،
+هر فکری که امشب از ذهنت رد می‌شود
+قرار نیست تبدیل به واقعیت شود.
+
+اینکه مغزت می‌گوید
+«نکند...»
+دلیل نمی‌شود که واقعاً اتفاق افتاده باشد.
+
+قبل از باور کردن ترس،
+نفس بکش.
+
+تو لازم نیست تمام جواب‌ها را همین امشب پیدا کنی.
+
+امشب فقط زنده بمان،
+آرام‌تر نفس بکش
+و بگذار فردا
+برای فردا باشد.`
+},
+
+{
+    name:"فندق",
+    text:
+`برای روزهای بد:
+
+اگر امروز روز خوبی نبود،
+این یعنی فقط امروز خوب نبوده.
+
+نه اینکه تو بدی.
+
+نه اینکه زندگی همیشه همین‌طور می‌ماند.
+
+نه اینکه هیچ‌چیز درست نمی‌شود.
+
+روزهای بد
+تاریخ انقضا دارند.
+
+و تو قرار نیست
+تمام شخصیت خودت را
+از روی یک روز سخت تعریف کنی.`
+},
+
+{
+    name:"تافی",
+    text:
+`برای وقتی که دلت تنگ شده:
+
+دلتنگی گاهی عجیب است.
+
+یک نفر دور است،
+اما حضورش
+در تمام اتاق پخش شده.
+
+در آهنگ،
+در یک جمله،
+در یک عکس،
+در یک خاطره.
+
+اگر دلت تنگ شد،
+اشکالی ندارد.
+
+دلتنگی یعنی
+چیزی برایت اهمیت داشته.`
+}
+
+];
+
+function createCats(){
+
+    const grid=
+        document.getElementById("catGrid");
+
+    cats.forEach(function(cat,index){
+
+        const card=
+            document.createElement("div");
+
+        card.className="catCard";
+
+        card.innerHTML=`
+
+            <div class="catName">
+                ${cat.name}
+            </div>
+
+            <div class="cat">
+
+                <div class="tail"></div>
+
+                <div class="catBody"></div>
+
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+
+                <div class="catHead">
+
+                    <div class="ear left">
+                        <div class="earInner"></div>
+                    </div>
+
+                    <div class="ear right">
+                        <div class="earInner"></div>
+                    </div>
+
+                    <div class="eyeCat left"></div>
+                    <div class="eyeCat right"></div>
+
+                    <div class="whisker w1"></div>
+                    <div class="whisker w2"></div>
+
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+
+                </div>
+
+                <div
+                    class="butt"
+                    data-index="${index}"
+                ></div>
+
+            </div>
+
+            <div class="buttHint">
+                روی باسن بزن
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+createCats();
+
+
+document
+.getElementById("catGrid")
+.addEventListener("click",function(e){
+
+    const butt=
+        e.target.closest(".butt");
+
+    if(!butt) return;
+
+    const index=
+        Number(butt.dataset.index);
+
+    const sound=
+        document.getElementById("meow");
+
+    sound.currentTime=0;
+
+    sound.play().catch(function(){});
+
+    openModal(
+        "نامه‌ی "+cats[index].name,
+        cats[index].text
+    );
+
+});
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(title,text){
+
+    document.getElementById("modalTitle").textContent=title;
+
+    document.getElementById("modalText").textContent=text;
+
+    document.getElementById("modal").classList.add("show");
+
+}
+
+function closeModal(){
+
+    document.getElementById("modal").classList.remove("show");
+
+}
+
+document.getElementById("modal").addEventListener(
+    "click",
+    function(e){
+
+        if(e.target===this){
+            closeModal();
+        }
+
+    }
+);
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+const gallery=
+    document.getElementById("galleryGrid");
+
+for(let i=1;i<=12;i++){
+
+    const photo=
+        document.createElement("div");
+
+    photo.className="photo";
+
+    const rotations=[
+        -3,2,-2,3,-1,2,-3,1,3,-2,2,-1
+    ];
+
+    photo.style.setProperty(
+        "--r",
+        rotations[i-1]+"deg"
+    );
+
+    photo.innerHTML=`
+        <img
+            src="photo${i}.jpg"
+            alt="خاطره ${i}"
+            loading="lazy"
+            onerror="this.style.opacity='.15'"
+        >
+    `;
+
+    photo.addEventListener("click",function(){
+
+        const image=
+            photo.querySelector("img");
+
+        document.getElementById(
+            "lightboxImage"
+        ).src=image.src;
+
+        document.getElementById(
+            "lightbox"
+        ).classList.add("show");
+
+    });
+
+    gallery.appendChild(photo);
+
+}
+
+function closeLightbox(){
+
+    document.getElementById(
+        "lightbox"
+    ).classList.remove("show");
+
+}
+
+
+/* =====================================================
+   365 REASONS
+===================================================== */
+
+const reasons=[
+
+"چون وقتی خودت هستی، هیچ‌کس شبیه تو نیست.",
+"چون صدایت می‌تواند یک روز معمولی را عوض کند.",
+"چون نگاهت حرف‌هایی دارد که کلمه‌ها بلد نیستند.",
+"چون حتی سکوتت هم برای من معنا دارد.",
+"چون خنده‌ات از آن صداهایی‌ست که آدم دلش می‌خواهد حفظ کند.",
+"چون برای چیزهایی که دوست داری با تمام وجودت ذوق می‌کنی.",
+"چون قلبت از چیزی که نشان می‌دهی حساس‌تر است.",
+"چون پشت خیلی از نگرانی‌هایت یک قلب مراقب پنهان شده.",
+"چون وقتی خوشحال می‌شوی، خوشحالی‌ات واقعی است.",
+"چون وقتی ناراحتی، احساساتت را نمی‌توانی نصفه زندگی کنی.",
+"چون نگاهت به آدم‌ها سطحی نیست.",
+"چون جزئیات را می‌بینی.",
+"چون خاطره‌ها برایت ارزش دارند.",
+"چون بعضی لحظه‌های کوچک را تبدیل به اتفاق‌های بزرگ می‌کنی.",
+"چون بلد هستی برای چیزهای ساده هیجان داشته باشی.",
+"چون وجودت یک کپی از هیچ‌کس نیست.",
+"چون حتی عیب‌هایت هم بخشی از داستان تو هستند.",
+"چون لازم نیست کامل باشی تا دوست‌داشتنی باشی.",
+"چون وقتی کسی را دوست داری، حضورش برایت اهمیت دارد.",
+"چون قلبت هنوز برای چیزهای قشنگ جا دارد.",
+"چون می‌توانی بعد از روزهای سخت دوباره بلند شوی.",
+"چون پشت خستگی‌هایت هنوز یک بخش امیدوار وجود دارد.",
+"چون وقتی چیزی را جدی می‌گیری، تمام توجهت را می‌دهی.",
+"چون بعضی حرف‌هایت تا مدت‌ها در ذهن می‌مانند.",
+"چون حتی وقتی خودت را نمی‌بینی، دیگران می‌توانند زیبایی‌ات را ببینند.",
+"چون نگاهت گاهی بیشتر از یک نامه حرف می‌زند.",
+"چون دوست داشتنت شبیه یک اتفاق ساده نیست.",
+"چون بودنت قابل جایگزین کردن نیست.",
+"چون هیچ نسخه‌ی دیگری از تو وجود ندارد.",
+"چون صدای تو صدای توست و هیچ‌کس نمی‌تواند آن را کپی کند.",
+"چون خستگی‌هایت هم بخشی از مسیرت هستند.",
+"چون هنوز برای آینده رویا داری.",
+"چون با وجود ترس‌هایت ادامه می‌دهی.",
+"چون گاهی یک جمله‌ات می‌تواند حال آدم را عوض کند.",
+"چون در ذهن تو دنیا جزئیات بیشتری دارد.",
+"چون بعضی چیزها را عمیق‌تر از خیلی‌ها احساس می‌کنی.",
+"چون برای آدم‌های مهم زندگی‌ات اهمیت قائل می‌شوی.",
+"چون وقتی چیزی را دوست داشته باشی، از آن ساده نمی‌گذری.",
+"چون چشم‌هایت داستان خودشان را دارند.",
+"چون نگاهت گاهی آرام‌تر از هزار جمله است.",
+"چون خنده‌ات یک لحظه را از حالت معمولی خارج می‌کند.",
+"چون حتی ناراحتی‌ات هم واقعی است.",
+"چون خوشحالی‌ات هم واقعی است.",
+"چون احساساتت ساختگی نیستند.",
+"چون می‌توانی یک خاطره را سال‌ها با خودت نگه داری.",
+"چون چیزهای کوچک برایت بی‌اهمیت نیستند.",
+"چون برای بعضی آدم‌ها واقعاً وقت می‌گذاری.",
+"چون وقتی دلت چیزی را بخواهد، ذوقت دیدنی می‌شود.",
+"چون نگاهت به عشق سطحی نیست.",
+"چون عشق را فقط در حرف نمی‌بینی.",
+"چون حضور برایت مهم است.",
+"چون توجه برایت مهم است.",
+"چون شنیده شدن برایت مهم است.",
+"چون فهمیده شدن برایت مهم است.",
+"چون می‌دانی یک رابطه فقط از کلمات ساخته نمی‌شود.",
+"چون قلبت دنبال ارتباط واقعی است.",
+"چون درونت هزار داستان نگفته وجود دارد.",
+"چون بعضی زخم‌هایت تو را عمیق‌تر کرده‌اند.",
+"چون با وجود همه‌چیز هنوز مهربانی در تو هست.",
+"چون دنیا با آدم‌هایی مثل تو کمی انسانی‌تر می‌شود.",
+"چون تو فقط ظاهر نیستی.",
+"چون شخصیتت لایه دارد.",
+"چون هرچه بیشتر شناخته شوی، چیزهای بیشتری برای کشف کردنت هست.",
+"چون بعضی ویژگی‌هایت در همان نگاه اول دیده نمی‌شوند.",
+"چون آدم‌ها برای شناختنت باید وقت بگذارند.",
+"چون ارزش تو با نظر یک نفر بالا و پایین نمی‌شود.",
+"چون تو یک عدد، نمره یا موفقیت نیستی.",
+"چون اشتباه کردن از تو یک آدم بد نمی‌سازد.",
+"چون خسته شدن از تو یک آدم ضعیف نمی‌سازد.",
+"چون گریه کردن از ارزش تو کم نمی‌کند.",
+"چون کمک خواستن ضعف نیست.",
+"چون نه گفتن حق توست.",
+"چون استراحت کردن حق توست.",
+"چون آرام بودن حق توست.",
+"چون شاد بودن حق توست.",
+"چون دوست داشته شدن حق توست.",
+"چون احترام دیدن حق توست.",
+"چون شنیده شدن حق توست.",
+"چون لازم نیست همیشه دیگران را راضی کنی.",
+"چون لازم نیست همیشه قوی‌ترین آدم اتاق باشی.",
+"چون لازم نیست برای ارزشمند بودن بجنگی.",
+"چون ارزش تو قبل از هر موفقیتی وجود داشته.",
+"چون آینده‌ات هنوز پر از امکان است.",
+"چون هنوز کلی چیز برای تجربه کردن داری.",
+"چون هنوز کلی آهنگ برای شنیدن داری.",
+"چون هنوز کلی شب برای ستاره دیدن داری.",
+"چون هنوز کلی عکس برای گرفتن داری.",
+"چون هنوز کلی خاطره برای ساختن داری.",
+"چون داستانت تمام نشده.",
+"چون هیچ فصل سختی تمام کتاب نیست.",
+"چون فردا می‌تواند متفاوت باشد.",
+"چون امروز مجبور نیستی شبیه دیروز باشی.",
+"چون حق داری تغییر کنی.",
+"چون حق داری نظر عوض کنی.",
+"چون حق داری دوباره شروع کنی.",
+"چون حق داری بعضی چیزها را رها کنی.",
+"چون حق داری بعضی آدم‌ها را نبخشی.",
+"چون حق داری بعضی روزها فقط زنده بمانی و ادامه بدهی.",
+"چون تلاش کردنت خودش ارزشمند است.",
+"چون حتی تلاش‌های دیده‌نشده‌ات مهم‌اند.",
+"چون هیچ‌کس تمام جنگ‌های درونت را نمی‌بیند.",
+"چون تو بیشتر از چیزی هستی که دیگران از تو می‌بینند.",
+"چون تو بیشتر از بدترین روزت هستی.",
+"چون تو بیشتر از یک اشتباهت هستی.",
+"چون تو بیشتر از یک شکستت هستی.",
+"چون تو بیشتر از یک ترست هستی.",
+"چون تو بیشتر از یک نظر دیگرانی.",
+"چون می‌توانی دوباره خودت را پیدا کنی.",
+"چون گاهی لازم است آهسته بروی.",
+"چون آهسته رفتن هنوز رفتن است.",
+"چون کوچک‌ترین قدم هم قدم است.",
+"چون یک نفس عمیق هم شروع خوبی است.",
+"چون گاهی استراحت خودش پیشرفت است.",
+"چون قلبت به مراقبت احتیاج دارد.",
+"چون ذهن شلوغت سزاوار کمی سکوت است.",
+"چون خودت سزاوار مهربانی خودت هستی.",
+"چون نباید همیشه خودت را آخر صف بگذاری.",
+"چون نیازهای تو هم مهم‌اند.",
+"چون احساسات تو هم معتبرند.",
+"چون ترس‌هایت قابل شنیدن‌اند.",
+"چون ناراحتی‌هایت قابل فهمیدن‌اند.",
+"چون خوشحالی‌هایت ارزش جشن گرفتن دارند.",
+"چون موفقیت‌هایت ارزش افتخار کردن دارند.",
+"چون شکست‌هایت ارزش سرزنش کردن ندارند.",
+"چون می‌توانی از نو یاد بگیری.",
+"چون می‌توانی از نو بسازی.",
+"چون می‌توانی از نو دوست بداری.",
+"چون می‌توانی دوباره اعتماد کنی.",
+"چون می‌توانی دوباره بخندی.",
+"چون می‌توانی دوباره ذوق کنی.",
+"چون هنوز بخش‌های زیادی از خودت را کشف نکرده‌ای.",
+"چون شاید بهترین فصل زندگی‌ات هنوز شروع نشده باشد.",
+"چون یک روز بد نمی‌تواند آینده را پیش‌بینی کند.",
+"چون یک شب بد نمی‌تواند فردا را تعریف کند.",
+"چون یک پیام بی‌جواب تمام حقیقت نیست.",
+"چون یک سکوت تمام احساسات نیست.",
+"چون یک اشتباه تمام شخصیت نیست.",
+"چون یک ترس تمام آینده نیست.",
+"چون ذهن همیشه راوی قابل اعتمادی نیست.",
+"چون فکرها واقعیت نیستند.",
+"چون نگرانی پیشگویی نیست.",
+"چون بدترین سناریو الزاماً اتفاق نمی‌افتد.",
+"چون هنوز می‌توانی آرام‌تر انتخاب کنی.",
+"چون لازم نیست جواب هر «نکند» را پیدا کنی.",
+"چون گاهی جواب درست فقط «نمی‌دانم» است.",
+"چون نمی‌دانستن ترسناک است، اما طبیعی است.",
+"چون آینده با یک روز ساخته نمی‌شود.",
+"چون زندگی فقط نتیجه نیست؛ مسیر هم هست.",
+"چون مسیر تو ارزش دیدن دارد.",
+"چون رشد همیشه شبیه موفقیت بزرگ نیست.",
+"چون گاهی رشد یعنی کمتر خودت را سرزنش کنی.",
+"چون گاهی رشد یعنی یک مرز سالم بگذاری.",
+"چون گاهی رشد یعنی بگویی «خسته‌ام».",
+"چون گاهی رشد یعنی کمک بخواهی.",
+"چون گاهی رشد یعنی خودت را ببخشی.",
+"چون بخشیدن خودت هم شجاعت می‌خواهد.",
+"چون هنوز می‌توانی با خودت دوست شوی.",
+"چون رابطه‌ات با خودت مهم‌ترین رابطه‌ای است که داری.",
+"چون هیچ‌کس نباید جای خودت را در زندگی خودت بگیرد.",
+"چون خودت باید خانه‌ی امن خودت باشی.",
+"چون قلبت خانه می‌خواهد.",
+"چون آرامش چیزی نیست که باید بابتش عذرخواهی کنی.",
+"چون حساس بودن همیشه ضعف نیست.",
+"چون حساسیت می‌تواند یعنی عمیق دیدن.",
+"چون عمیق دیدن می‌تواند زیبایی داشته باشد.",
+"چون تو چیزهایی را می‌بینی که خیلی‌ها از کنارشان رد می‌شوند.",
+"چون زیبایی را در جزئیات پیدا می‌کنی.",
+"چون یک لحظه‌ی کوچک می‌تواند برایت مهم شود.",
+"چون خاطره ساختن را بلد هستی.",
+"چون بعضی خاطره‌ها با تو پیر می‌شوند.",
+"چون صدای خنده‌ات قابل حفظ کردن است.",
+"چون حالت‌های صورتت داستان دارند.",
+"چون وقتی ذوق می‌کنی، خود واقعی‌ات بیشتر دیده می‌شود.",
+"چون وقتی از چیزی حرف می‌زنی که دوستش داری، چشم‌هایت فرق می‌کنند.",
+"چون اشتیاقت قشنگ است.",
+"چون کنجکاوی‌ات قشنگ است.",
+"چون سوال‌هایت قشنگ‌اند.",
+"چون جواب نداشتن بعضی سوال‌ها هم اشکالی ندارد.",
+"چون تو لازم نیست همه‌چیز را بدانی.",
+"چون یاد گرفتن ادامه دارد.",
+"چون هر روز می‌تواند یک چیز تازه به تو یاد بدهد.",
+"چون هنوز جا برای رشد داری.",
+"چون رشد کردن به معنی بی‌نقص شدن نیست.",
+"چون انسان بودن یعنی ناقص بودن.",
+"چون نقص‌ها تو را واقعی می‌کنند.",
+"چون واقعی بودن بهتر از بی‌نقص به نظر رسیدن است.",
+"چون تو یک آدم واقعی با احساسات واقعی هستی.",
+"چون پشت لبخندهایت یک جهان وجود دارد.",
+"چون پشت سکوتت گاهی هزار حرف است.",
+"چون پشت عصبانیتت گاهی خستگی است.",
+"چون پشت ترست گاهی اهمیت دادن است.",
+"چون پشت نگرانی‌ات گاهی عشق است.",
+"چون برایت مهم است که چیزها درست باشند.",
+"چون عدالت برایت بی‌اهمیت نیست.",
+"چون بی‌تفاوت نیستی.",
+"چون قلبت هنوز واکنش نشان می‌دهد.",
+"چون هنوز می‌توانی تحت تأثیر قرار بگیری.",
+"چون هنوز می‌توانی شگفت‌زده شوی.",
+"چون هنوز می‌توانی عاشق زیبایی‌های کوچک شوی.",
+"چون هنوز برای یک آهنگ خوب جا داری.",
+"چون هنوز برای یک شب آرام جا داری.",
+"چون هنوز برای یک بغل طولانی جا داری.",
+"چون هنوز برای یک گفت‌وگوی عمیق جا داری.",
+"چون هنوز برای خندیدن جا داری.",
+"چون هنوز برای گریه کردن جا داری.",
+"چون هنوز برای شروع دوباره جا داری.",
+"چون زندگی‌ات هنوز تمام نشده.",
+"چون فصل‌های بعدی هنوز نوشته نشده‌اند.",
+"چون تو نویسنده‌ی بخشی از فردایی.",
+"چون انتخاب‌های کوچک تو مهم‌اند.",
+"چون مهربانی‌های کوچکت مهم‌اند.",
+"چون یک جمله‌ی خوب می‌تواند نجات‌بخش باشد.",
+"چون توجه کوچک می‌تواند بزرگ باشد.",
+"چون شنیدن واقعی کمیاب است.",
+"چون وقتی گوش می‌دهی، فقط صدا را نمی‌شنوی.",
+"چون می‌خواهی فهمیده شوی.",
+"چون فهمیده شدن یکی از زیباترین شکل‌های نزدیکی است.",
+"چون نزدیکی فقط فاصله‌ی فیزیکی نیست.",
+"چون گاهی یک جمله از دور هم می‌تواند نزدیک باشد.",
+"چون بعضی آدم‌ها حتی از فاصله هم حضور دارند.",
+"چون خاطره‌ها فاصله را کمی کوتاه می‌کنند.",
+"چون یک عکس می‌تواند یک شب کامل را برگرداند.",
+"چون یک آهنگ می‌تواند یک فصل را زنده کند.",
+"چون یک بو می‌تواند سال‌ها را برگرداند.",
+"چون حافظه‌ی آدم پر از درهای مخفی است.",
+"چون تو هم پر از درهای مخفی هستی.",
+"چون هر بار شناختنت یک کشف تازه است.",
+"چون هیچ خلاصه‌ای نمی‌تواند تمام تو را توضیح دهد.",
+"چون یک جمله برای تو کافی نیست.",
+"چون یک عکس برای توضیح تو کافی نیست.",
+"چون یک ویژگی نمی‌تواند تمام شخصیتت باشد.",
+"چون تو ترکیبی از هزار تجربه‌ای.",
+"چون گذشته‌ات تو را ساخته، اما مجبور نیست آینده‌ات را تعیین کند.",
+"چون می‌توانی گذشته را بفهمی بدون اینکه در آن زندگی کنی.",
+"چون می‌توانی زخمت را بشناسی بدون اینکه زخم باشی.",
+"چون می‌توانی ترست را ببینی بدون اینکه ترس باشی.",
+"چون می‌توانی فکر را ببینی بدون اینکه فکر باشی.",
+"چون تو مشاهده‌گر خیلی چیزهایی هستی که از ذهنت عبور می‌کنند.",
+"چون همیشه لازم نیست به هر فکری پاسخ بدهی.",
+"چون بعضی افکار فقط مهمان‌اند.",
+"چون بعضی نگرانی‌ها باید بروند.",
+"چون بعضی روزها باید فقط بگذرند.",
+"چون بعضی دردها با زمان آرام‌تر می‌شوند.",
+"چون زمان همیشه دشمن نیست.",
+"چون صبر می‌تواند یک شکل از مراقبت باشد.",
+"چون مراقبت از خودت خودخواهی نیست.",
+"چون استراحت تنبلی نیست.",
+"چون گریه شکست نیست.",
+"چون ترس بزدلی نیست.",
+"چون حساسیت ضعف نیست.",
+"چون کمک خواستن ضعف نیست.",
+"چون نه گفتن بی‌رحمی نیست.",
+"چون مرز داشتن خودخواهی نیست.",
+"چون خودت بودن بی‌ادبی نیست.",
+"چون نظر داشتن جرم نیست.",
+"چون اشتباه کردن پایان نیست.",
+"چون عذرخواهی می‌تواند آغاز باشد.",
+"چون بخشیدن می‌تواند آزادی باشد.",
+"چون رها کردن گاهی عشق به خود است.",
+"چون خودت را انتخاب کردن مهم است.",
+"چون ارزش خودت را باید از درون هم بشنوی.",
+"چون صدای منتقد درونت همیشه حقیقت را نمی‌گوید.",
+"چون می‌توانی صدای مهربان‌تری درون خودت بسازی.",
+"چون هر روز یک فرصت کوچک برای این کار است.",
+"چون حتی پنج دقیقه آرامش هم ارزش دارد.",
+"چون حتی یک لیوان آب و یک نفس عمیق هم شروع است.",
+"چون بدن تو سزاوار مراقبت است.",
+"چون ذهنت سزاوار استراحت است.",
+"چون قلبت سزاوار امنیت است.",
+"چون روحت سزاوار آرامش است.",
+"چون زندگی قرار نیست همیشه مسابقه باشد.",
+"چون لازم نیست با کسی مقایسه شوی.",
+"چون مسیر هر آدم متفاوت است.",
+"چون سرعت هر آدم متفاوت است.",
+"چون دیر رسیدن همیشه شکست نیست.",
+"چون زود رسیدن همیشه پیروزی نیست.",
+"چون مهم این است که مسیر خودت را بشناسی.",
+"چون تو باید تعریف خودت از زندگی را بسازی.",
+"چون رؤیاهای تو ارزش تلاش دارند.",
+"چون هدف‌هایت ارزش زمان گذاشتن دارند.",
+"چون حتی اگر امروز دور به نظر برسند، می‌توانی نزدیک‌ترشان شوی.",
+"چون آینده از قدم‌های کوچک ساخته می‌شود.",
+"چون هر صفحه‌ی زندگی جای یک جمله‌ی تازه دارد.",
+"چون می‌توانی داستان را تغییر بدهی.",
+"چون می‌توانی پایان یک فصل را آغاز فصل دیگری کنی.",
+"چون هیچ‌کس تمام آینده‌ات را از قبل ننوشته.",
+"چون هنوز انتخاب‌های زیادی داری.",
+"چون هنوز آدم‌های زیادی می‌توانند دوستت داشته باشند.",
+"چون هنوز اتفاق‌های خوبی وجود دارند که از آن‌ها خبر نداری.",
+"چون هنوز آهنگ‌هایی وجود دارند که نشنیده‌ای.",
+"چون هنوز مکان‌هایی وجود دارند که ندیده‌ای.",
+"چون هنوز غروب‌هایی وجود دارند که تماشا نکرده‌ای.",
+"چون هنوز باران‌هایی وجود دارند که زیرشان قدم نزده‌ای.",
+"چون هنوز شب‌هایی وجود دارند که ستاره‌هایشان را ندیده‌ای.",
+"چون هنوز کتاب‌هایی وجود دارند که نخوانده‌ای.",
+"چون هنوز جمله‌هایی وجود دارند که قرار است بشنوی.",
+"چون هنوز آدم‌هایی وجود دارند که قرار است تحت تأثیرت قرار بگیرند.",
+"چون هنوز نسخه‌های تازه‌ای از خودت قرار است متولد شوند.",
+"چون تغییر کردن طبیعی است.",
+"چون ثابت ماندن همیشه هدف نیست.",
+"چون رشد گاهی آرام و نامرئی است.",
+"چون تو ممکن است همین حالا هم بیشتر از چیزی که فکر می‌کنی رشد کرده باشی.",
+"چون چیزهایی را پشت سر گذاشته‌ای که یک روز فکر می‌کردی نمی‌توانی.",
+"چون هنوز اینجایی.",
+"چون هنوز ادامه می‌دهی.",
+"چون هنوز نفس می‌کشی.",
+"چون هنوز می‌توانی انتخاب کنی.",
+"چون هنوز می‌توانی بخندی.",
+"چون هنوز می‌توانی دوست بداری.",
+"چون هنوز می‌توانی دوست داشته شوی.",
+"چون هنوز امید می‌تواند یک گوشه‌ی کوچک زندگی‌ات باشد.",
+"چون گاهی یک نور خیلی کوچک برای ادامه کافی است.",
+"چون حتی تاریک‌ترین شب هم تمام می‌شود.",
+"چون صبح بالاخره می‌رسد.",
+"چون هیچ شبی تا ابد نمی‌ماند.",
+"چون هیچ احساسی برای همیشه با همان شدت باقی نمی‌ماند.",
+"چون غم تغییر می‌کند.",
+"چون ترس تغییر می‌کند.",
+"چون خستگی تغییر می‌کند.",
+"چون زندگی حرکت می‌کند.",
+"چون تو هم می‌توانی حرکت کنی.",
+"چون لازم نیست همیشه بدانی به کجا.",
+"چون گاهی فقط قدم بعدی مهم است.",
+"چون همین حالا هم کافی است.",
+"چون تو ارزشمندتری از چیزی که ذهنت در بدترین روز می‌گوید.",
+"چون تو مهربانی‌هایی داری که شاید خودت متوجهشان نشوی.",
+"چون حضور تو برای بعضی آدم‌ها واقعاً فرق ایجاد می‌کند.",
+"چون شاید خودت ندانی، اما نبودنت می‌تواند یک اتاق را ساکت‌تر کند.",
+"چون بعضی آدم‌ها با بودنشان فضا را تغییر می‌دهند.",
+"چون تو یکی از همان آدم‌هایی.",
+"چون داستان تو فقط درباره‌ی دردهایت نیست.",
+"چون خنده‌هایت هم بخشی از تو هستند.",
+"چون ذوقت هم بخشی از توست.",
+"چون شیطنتت هم بخشی از توست.",
+"چون سکوتت هم بخشی از توست.",
+"چون مهربانی‌ات بخشی از توست.",
+"چون عصبانیتت هم بخشی از داستانت است، نه تمام داستانت.",
+"چون تو می‌توانی خودت را بهتر بشناسی.",
+"چون خودشناسی یک سفر است.",
+"چون لازم نیست یک‌باره همه‌چیز را بفهمی.",
+"چون می‌توانی سؤال‌های تازه بپرسی.",
+"چون می‌توانی جواب‌های تازه پیدا کنی.",
+"چون می‌توانی از تجربه‌هایت یاد بگیری.",
+"چون می‌توانی از اشتباه‌هایت چیزی بسازی.",
+"چون می‌توانی از دردهایت معنا پیدا کنی.",
+"چون می‌توانی از خوشی‌هایت خاطره بسازی.",
+"چون زندگی ترکیبی از همین‌هاست.",
+"چون هیچ انسانی فقط یک احساس نیست.",
+"چون تو مجموعه‌ای از لحظه‌هایی.",
+"چون بعضی لحظه‌ها ارزش قاب گرفتن دارند.",
+"چون بعضی حرف‌ها ارزش نگه داشتن دارند.",
+"چون بعضی نگاه‌ها ارزش به خاطر سپردن دارند.",
+"چون بعضی آدم‌ها ارزش نوشتن دارند.",
+"چون بعضی دوست داشتن‌ها ارزش یک عمر خاطره دارند.",
+"چون تو از آن آدم‌هایی هستی که آدم دلش می‌خواهد برایشان بنویسد.",
+"چون حتی یک صفحه هم برای گفتن تمام حرف‌ها کافی نیست.",
+"چون هنوز حرف‌های نگفته زیادی وجود دارد.",
+"چون هنوز خاطره‌های نساخته زیادی وجود دارد.",
+"چون هنوز خنده‌های نشنیده زیادی وجود دارد.",
+"چون هنوز شب‌های طولانی برای حرف زدن وجود دارد.",
+"چون هنوز صبح‌های آرام برای بیدار شدن وجود دارد.",
+"چون هنوز فرصت برای دوست داشتن هست.",
+"چون هنوز فرصت برای بهتر شدن هست.",
+"چون هنوز فرصت برای آرام گرفتن هست.",
+"چون هنوز فرصت برای انتخاب خودت هست.",
+"چون تو ارزش این فرصت‌ها را داری.",
+"چون لازم نیست برای گرفتن محبت، خودت را کوچک کنی.",
+"چون لازم نیست برای ماندن کسی، خودت را گم کنی.",
+"چون آدم درست، خود واقعی تو را هم می‌خواهد.",
+"چون دوست داشتن سالم باید جایی برای نفس کشیدن داشته باشد.",
+"چون تو سزاوار رابطه‌ای هستی که در آن امنیت باشد.",
+"چون تو سزاوار حرف زدن بدون ترس هستی.",
+"چون تو سزاوار شنیده شدن بدون قضاوت هستی.",
+"چون تو سزاوار آرامشی هستی که مجبور نباشی برایش التماس کنی.",
+"چون ارزش تو قابل معامله نیست.",
+"چون عزت نفست باید خانه داشته باشد.",
+"چون قلبت باید جای امنی برای برگشتن داشته باشد.",
+"چون تو باید بتوانی خودت باشی.",
+"چون تو نباید برای دوست داشته شدن نقش بازی کنی.",
+"چون بهترین نسخه‌ی تو، نسخه‌ی واقعی توست.",
+"چون هیچ‌کس نمی‌تواند جای تو را دقیقاً پر کند.",
+"چون تو یک ترکیب غیرتکراری از تجربه‌ها، احساسات و رویاهایی.",
+"چون جهان به نسخه‌ی کپی‌شده‌ی تو احتیاج ندارد.",
+"چون خود تو کافی‌ست.",
+"چون بودن تو خودش یک دلیل است.",
+"چون اگر تمام این ۳۶۵ دلیل را هم پاک کنیم، باز یک دلیل باقی می‌ماند: تو، تویی."
+];
+
+
+/*
+  اگر مرورگر تعداد آرایه را کمتر از 365 تشخیص داد،
+  چند دلیل پایانی کاملاً مستقل اضافه می‌کنیم.
+*/
+
+const extraReasons=[
+"چون بعضی شب‌ها فقط فکر کردن به تو لبخند می‌آورد.",
+"چون اسم تو روی صفحه هم حس خاصی دارد.",
+"چون شنیدن اسمت می‌تواند یک خاطره را روشن کند.",
+"چون حضور تو در ذهن، شکل خاص خودش را دارد.",
+"چون بعضی آدم‌ها را نمی‌شود توضیح داد؛ فقط باید احساسشان کرد.",
+"چون تو برای یک نفر می‌توانی تمام یک خاطره باشی.",
+"چون لبخندت ارزش ثبت شدن دارد.",
+"چون لحظه‌های ساده با آدم درست ساده نمی‌مانند.",
+"چون یک گفت‌وگوی معمولی می‌تواند تبدیل به خاطره شود.",
+"چون بعضی سکوت‌ها کنار آدم درست آرام‌اند.",
+"چون حتی یک سلام می‌تواند شروع یک داستان باشد.",
+"چون بعضی داستان‌ها پایان مشخصی ندارند.",
+"چون خاطره‌های خوب دوباره در ذهن روشن می‌شوند.",
+"چون یک عکس می‌تواند بیشتر از هزار کلمه نگه دارد.",
+"چون بعضی نگاه‌ها آدم را متوقف می‌کنند.",
+"چون بعضی لبخندها در حافظه می‌مانند.",
+"چون تو می‌توانی دلیل یک لبخند ناگهانی باشی.",
+"چون بعضی آدم‌ها از دور هم نزدیک‌اند.",
+"چون دلتنگی گاهی شکل دیگری از اهمیت دادن است.",
+"چون عشق فقط جمله نیست؛ توجه‌های کوچک هم هست.",
+"چون یک «خوبی؟» واقعی می‌تواند مهم باشد.",
+"چون یک «رسیدی؟» واقعی می‌تواند محبت باشد.",
+"چون یک «مراقب خودت باش» می‌تواند آغوش باشد.",
+"چون بعضی کلمات کوچک وزن بزرگی دارند.",
+"چون بعضی خاطره‌ها در زمان جا نمی‌گیرند.",
+"چون بعضی لحظه‌ها ارزش دوباره دیدن دارند.",
+"چون بعضی آهنگ‌ها آدم‌ها را به هم وصل می‌کنند.",
+"چون موسیقی گاهی حافظه‌ی قلب است.",
+"چون یک شب پرستاره می‌تواند آدم را یاد کسی بیندازد.",
+"چون ماه همیشه یک دلیل برای نگاه کردن به آسمان است.",
+"چون ستاره‌ها شبیه چراغ‌های کوچک امیدند.",
+"چون حتی تاریکی هم اگر ستاره داشته باشد زیبا می‌شود.",
+"چون زیبایی همیشه پر سر و صدا نیست.",
+"چون بعضی زیبایی‌ها آرام‌اند.",
+"چون بعضی دوست داشتن‌ها آرام‌اند.",
+"چون بعضی آدم‌ها را نمی‌توان با معیارهای معمول سنجید.",
+"چون تو معیار خودت را داری.",
+"چون خاص بودن همیشه عجیب بودن نیست؛ گاهی فقط خودت بودن است.",
+"چون خودت بودن چیزی‌ست که هیچ‌کس بهتر از تو انجام نمی‌دهد."
+];
+
+while(reasons.length<365){
+    reasons.push(
+        extraReasons[
+            (reasons.length- reasons.length%extraReasons.length)
+            %extraReasons.length
+        ]
+    );
+}
+
+/*
+  نمایش دقیقاً 365 کارت
+*/
+
+const reasonGrid=
+    document.getElementById("reasonGrid");
+
+reasons.slice(0,365).forEach(function(reason,index){
+
+    const card=
+        document.createElement("div");
+
+    card.className="reason glass";
+
+    card.innerHTML=`
+
+        <span class="reasonNumber">
+            ${String(index+1).padStart(3,"0")}
+        </span>
+
+        ${reason}
+
+    `;
+
+    reasonGrid.appendChild(card);
+
+});
+
+
+/* =====================================================
+   EYE MAGIC
+===================================================== */
+
+function eyeMagic(){
+
+    for(let i=0;i<18;i++){
+
+        const star=
+            document.createElement("div");
+
+        star.style.position="fixed";
+        star.style.width="5px";
+        star.style.height="5px";
+        star.style.borderRadius="50%";
+        star.style.background="#fff";
+        star.style.boxShadow="0 0 12px #fff";
+        star.style.left="50%";
+        star.style.top="50%";
+        star.style.zIndex="9999";
+        star.style.pointerEvents="none";
+
+        const angle=
+            Math.random()*Math.PI*2;
+
+        const distance=
+            100+Math.random()*350;
+
+        document.body.appendChild(star);
+
+        star.animate(
+            [
+                {
+                    transform:"translate(-50%,-50%) scale(1)",
+                    opacity:1
+                },
+                {
+                    transform:
+                        "translate("+
+                        Math.cos(angle)*distance+
+                        "px,"+
+                        Math.sin(angle)*distance+
+                        "px) scale(0)",
+                    opacity:0
+                }
+            ],
+            {
+                duration:900+Math.random()*500,
+                easing:"cubic-bezier(.2,.7,.2,1)"
+            }
+        );
+
+        setTimeout(function(){
+            star.remove();
+        },1500);
+
+    }
+
+}
+
+
+/* =====================================================
+   HUG EFFECT
+===================================================== */
+
+function sendHug(){
+
+    if(navigator.vibrate){
+
+        navigator.vibrate([
+            120,
+            80,
+            180,
+            70,
+            260
+        ]);
+
+    }
+
+    document.body.animate(
+        [
+            {transform:"translateX(0)"},
+            {transform:"translateX(-8px)"},
+            {transform:"translateX(8px)"},
+            {transform:"translateX(-6px)"},
+            {transform:"translateX(6px)"},
+            {transform:"translateX(0)"}
+        ],
+        {
+            duration:500
+        }
+    );
+
+    for(let i=0;i<5;i++){
+
+        const ring=
+            document.createElement("div");
+
+        ring.className="ring";
+
+        ring.style.animationDelay=
+            (i*.15)+"s";
+
+        document.body.appendChild(ring);
+
+        setTimeout(function(){
+            ring.remove();
+        },1800);
+
+    }
+
+    /*
+       صدای بم شبیه ضربان قلب
+       بدون نیاز به فایل اضافی
+    */
+
+    try{
+
+        const AudioContext=
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        const audioCtx=
+            new AudioContext();
+
+        const now=
+            audioCtx.currentTime;
+
+        for(let i=0;i<2;i++){
+
+            const osc=
+                audioCtx.createOscillator();
+
+            const gain=
+                audioCtx.createGain();
+
+            osc.type="sine";
+            osc.frequency.value=65;
+
+            gain.gain.setValueAtTime(
+                0,
+                now+i*.42
+            );
+
+            gain.gain.linearRampToValueAtTime(
+                .5,
+                now+i*.42+.05
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                .001,
+                now+i*.42+.3
+            );
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now+i*.42);
+            osc.stop(now+i*.42+.32);
+
+        }
+
+    }catch(e){}
+
+}
+
+
+/* =====================================================
+   ESC TO CLOSE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Escape"){
+
+            closeModal();
+            closeLightbox();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
